@@ -1,5 +1,7 @@
 # DurableTasksMcp
 
+*** Work in Progress ***
+
 A Model Context Protocol (MCP) server for debugging, monitoring, and troubleshooting Durable Task Framework (DTFx) orchestrations stored in Azure Storage.
 
 ## Features
