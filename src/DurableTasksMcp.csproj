@@ -8,7 +8,7 @@
     <ToolCommandName>dtfx-mcp</ToolCommandName>
 
     <!-- NuGet Package Metadata -->
-    <PackageId>DurableTasksMcp</PackageId>
+    <PackageId>DurableTask.Mcp</PackageId>
     <Description>A Model Context Protocol (MCP) server for debugging, monitoring, and troubleshooting Durable Task Framework (DTFx) orchestrations stored in Azure Storage. Provides tools for task hub discovery, orchestration inspection, history analysis, queue monitoring, and large message access.</Description>
     <PackageTags>mcp;model-context-protocol;durable-tasks;dtfx;azure;azure-storage;orchestration;debugging;monitoring;dotnet-tool</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>

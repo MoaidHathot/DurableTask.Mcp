@@ -1,6 +1,6 @@
-# DurableTasksMcp
+# DurableTask.Mcp
 
-[![NuGet](https://img.shields.io/nuget/v/DurableTasksMcp.svg)](https://www.nuget.org/packages/DurableTasksMcp/)
+[![NuGet](https://img.shields.io/nuget/v/DurableTask.Mcp.svg)](https://www.nuget.org/packages/DurableTask.Mcp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A Model Context Protocol (MCP) server for debugging, monitoring, and troubleshooting [Durable Task Framework (DTFx)](https://github.com/Azure/durabletask) orchestrations stored in Azure Storage.
@@ -22,13 +22,27 @@ A Model Context Protocol (MCP) server for debugging, monitoring, and troubleshoo
 ### As a .NET Tool (Recommended)
 
 ```bash
-dotnet tool install --global DurableTasksMcp
+dotnet tool install --global DurableTask.Mcp
 ```
 
 Once installed, run the tool using:
 
 ```bash
 dtfx-mcp --storage-account <your-storage-account>
+```
+
+### Using dnx (MCP Runner)
+
+If you have [dnx](https://github.com/AzureMCP/dnx) installed, you can run the tool directly without installing it globally:
+
+```bash
+dnx DurableTask.Mcp -- --storage-account <your-storage-account>
+```
+
+Or with logging enabled:
+
+```bash
+dnx DurableTask.Mcp -- --storage-account <your-storage-account> --log-file ./dtfx-mcp.log
 ```
 
 ### From Source
@@ -125,55 +139,70 @@ With logging enabled:
 }
 ```
 
+### Using dnx
+
+You can also configure Claude Desktop to use `dnx` to run the tool:
+
+```json
+{
+  "mcpServers": {
+    "durable-tasks": {
+      "command": "dnx",
+      "args": ["DurableTask.Mcp", "--", "-s", "mystorageaccount"]
+    }
+  }
+}
+```
+
 ## Available Tools
 
 ### Task Hub Tools
 
 | Tool | Description |
 |------|-------------|
-| `dtfx_list_task_hubs` | Lists all DTFx task hubs in the storage account |
-| `dtfx_get_task_hub_details` | Gets detailed information about a specific task hub |
-| `dtfx_get_orchestration_summary` | Gets summary statistics by runtime status |
+| `dtfx_list_task_hubs` | Lists all Durable Task Framework task hubs discovered in the configured Azure Storage account. Returns information about each hub's resources (tables, queues, containers). |
+| `dtfx_get_task_hub_details` | Gets detailed information about a specific task hub, including its tables, queues, and blob containers. |
+| `dtfx_get_orchestration_summary` | Gets summary statistics for orchestrations in a task hub, including counts by runtime status (Running, Completed, Failed, etc.). |
 
 ### Orchestration Tools
 
 | Tool | Description |
 |------|-------------|
-| `dtfx_list_orchestrations` | Lists orchestration instances with filtering |
-| `dtfx_get_orchestration` | Gets details of a specific orchestration |
-| `dtfx_search_orchestrations` | Searches orchestrations by instance ID prefix |
-| `dtfx_get_failed_orchestrations` | Gets failed orchestrations with error messages |
-| `dtfx_list_running_orchestrations` | Lists currently running orchestrations |
-| `dtfx_list_pending_orchestrations` | Lists orchestrations waiting to start |
+| `dtfx_list_orchestrations` | Lists orchestration instances from a task hub with optional filtering by status, name, and creation time. |
+| `dtfx_get_orchestration` | Gets detailed information about a specific orchestration instance by its instance ID. |
+| `dtfx_search_orchestrations` | Searches for orchestration instances by instance ID prefix. Useful for finding related orchestrations or sub-orchestrations. |
+| `dtfx_get_failed_orchestrations` | Gets orchestrations with Failed status along with their error messages from history. Useful for troubleshooting. |
+| `dtfx_list_running_orchestrations` | Lists all currently running orchestrations. Useful for monitoring active work. |
+| `dtfx_list_pending_orchestrations` | Lists orchestrations in Pending status (scheduled but not yet started). Useful for identifying backlog. |
 
 ### History Tools
 
 | Tool | Description |
 |------|-------------|
-| `dtfx_get_orchestration_history` | Gets complete execution history |
-| `dtfx_get_activity_history` | Gets activity-related events only |
-| `dtfx_get_sub_orchestration_history` | Gets sub-orchestration events |
-| `dtfx_get_timer_history` | Gets timer events |
-| `dtfx_get_external_events` | Gets external events raised to orchestration |
-| `dtfx_get_failed_activities` | Gets all failed activity executions |
-| `dtfx_get_history_summary` | Gets execution history summary |
+| `dtfx_get_orchestration_history` | Gets the complete execution history for an orchestration instance. Shows all events including activity executions, timers, sub-orchestrations, and external events. |
+| `dtfx_get_activity_history` | Gets only the activity-related history events (TaskScheduled, TaskCompleted, TaskFailed) for an orchestration. Useful for understanding the activity execution flow. |
+| `dtfx_get_sub_orchestration_history` | Gets sub-orchestration related history events for an orchestration. Shows when sub-orchestrations were created and their completion status. |
+| `dtfx_get_timer_history` | Gets timer-related history events for an orchestration. Shows durable timers that were created and when they fired. |
+| `dtfx_get_external_events` | Gets external event history for an orchestration. Shows events that were raised from outside the orchestration (e.g., via RaiseEventAsync). |
+| `dtfx_get_failed_activities` | Gets all failed activity executions for an orchestration. Shows the activity name and failure reason. |
+| `dtfx_get_history_summary` | Gets a summary of the orchestration history showing counts of each event type and key milestones. |
 
 ### Queue Tools
 
 | Tool | Description |
 |------|-------------|
-| `dtfx_list_queues` | Lists queues for a task hub with message counts |
-| `dtfx_peek_queue_messages` | Peeks at messages in a queue |
-| `dtfx_get_queue_depth` | Gets approximate message count for a queue |
-| `dtfx_get_all_queue_depths` | Gets message counts for all queues |
+| `dtfx_list_queues` | Lists all queues associated with a task hub, including control queues (for orchestrators) and work-item queue (for activities). |
+| `dtfx_peek_queue_messages` | Peeks at messages in a queue without removing them. Useful for debugging stuck orchestrations or activities. |
+| `dtfx_get_queue_depth` | Gets the approximate message count for a specific queue. Useful for monitoring backlog. |
+| `dtfx_get_all_queue_depths` | Gets the approximate message counts for all queues in a task hub. Useful for monitoring overall system health. |
 
 ### Blob Tools
 
 | Tool | Description |
 |------|-------------|
-| `dtfx_list_containers` | Lists blob containers for a task hub |
-| `dtfx_list_large_messages` | Lists large message blobs |
-| `dtfx_get_large_message_content` | Gets content of a large message blob |
+| `dtfx_list_containers` | Lists all blob containers associated with a task hub (large messages, leases, etc.). |
+| `dtfx_list_large_messages` | Lists large message blobs stored in the task hub's large messages container. These are payloads that exceeded the queue message size limit (>45KB). |
+| `dtfx_get_large_message_content` | Gets the content of a specific large message blob. Useful for inspecting large payloads that couldn't fit in queue messages. |
 
 ## Example Prompts
 

@@ -106,7 +106,7 @@ builder.Services
     {
         options.ServerInfo = new()
         {
-            Name = "DurableTasksMcp",
+            Name = "DurableTask.Mcp",
             Version = "1.0.0"
         };
     })
@@ -118,10 +118,10 @@ var app = builder.Build();
 try
 {
     var appTask = app.RunAsync();
-	// var dtss = app.Services.GetRequiredService<DurableTaskStorageService>();
-	// var hubTool = new TaskHubTools(dtss);
+	var dtss = app.Services.GetRequiredService<DurableTaskStorageService>();
+	var hubTool = new TaskHubTools(dtss);
 	
-	// var hubs = await hubTool.ListTaskHubs();
+	var hubs = await hubTool.ListTaskHubs();
 
 	await appTask;
 }
