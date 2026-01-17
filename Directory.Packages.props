@@ -1,0 +1,17 @@
+<Project>
+
+  <ItemGroup>
+    <!-- Azure SDK -->
+    <PackageVersion Include="Azure.Data.Tables" Version="12.11.0" />
+    <PackageVersion Include="Azure.Identity" Version="1.17.1" />
+    <PackageVersion Include="Azure.Storage.Blobs" Version="12.27.0" />
+    <PackageVersion Include="Azure.Storage.Queues" Version="12.25.0" />
+
+    <!-- Microsoft Extensions -->
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.2" />
+
+    <!-- MCP -->
+    <PackageVersion Include="ModelContextProtocol" Version="0.6.0-preview.1" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,31 @@
+<Project>
+
+  <PropertyGroup>
+    <!-- Build Configuration -->
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+
+    <!-- Versioning -->
+    <Version>1.0.0</Version>
+
+    <!-- Author and Company -->
+    <Authors>Moaid Hathot</Authors>
+    <Company>Moaid Hathot</Company>
+    <Copyright>Copyright (c) 2026 Moaid Hathot</Copyright>
+
+    <!-- Repository Information -->
+    <RepositoryUrl>https://github.com/MoaidHathot/DurableTasksMcp</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/MoaidHathot/DurableTasksMcp</PackageProjectUrl>
+
+    <!-- Package Configuration -->
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+
+    <!-- Enable Central Package Management -->
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+</Project>
