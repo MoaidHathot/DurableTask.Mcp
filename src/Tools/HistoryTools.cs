@@ -11,10 +11,10 @@ namespace DurableTasksMcp.Tools;
 [McpServerToolType]
 public sealed class HistoryTools
 {
-    private readonly DurableTaskStorageService _storageService;
+    private readonly IDurableTaskStorageService _storageService;
     private static readonly JsonSerializerOptions JsonOptions = new() { WriteIndented = true };
 
-    public HistoryTools(DurableTaskStorageService storageService)
+    public HistoryTools(IDurableTaskStorageService storageService)
     {
         _storageService = storageService;
     }

@@ -11,10 +11,10 @@ namespace DurableTasksMcp.Tools;
 [McpServerToolType]
 public sealed class TaskHubTools
 {
-    private readonly DurableTaskStorageService _storageService;
+    private readonly IDurableTaskStorageService _storageService;
     private static readonly JsonSerializerOptions JsonOptions = new() { WriteIndented = true };
 
-    public TaskHubTools(DurableTaskStorageService storageService)
+    public TaskHubTools(IDurableTaskStorageService storageService)
     {
         _storageService = storageService;
     }

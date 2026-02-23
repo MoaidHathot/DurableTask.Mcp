@@ -11,10 +11,10 @@ namespace DurableTasksMcp.Tools;
 [McpServerToolType]
 public sealed class BlobTools
 {
-    private readonly DurableTaskStorageService _storageService;
+    private readonly IDurableTaskStorageService _storageService;
     private static readonly JsonSerializerOptions JsonOptions = new() { WriteIndented = true };
 
-    public BlobTools(DurableTaskStorageService storageService)
+    public BlobTools(IDurableTaskStorageService storageService)
     {
         _storageService = storageService;
     }

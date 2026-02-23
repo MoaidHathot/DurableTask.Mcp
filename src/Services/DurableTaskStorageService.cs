@@ -10,7 +10,7 @@ namespace DurableTasksMcp.Services;
 /// <summary>
 /// Service for accessing Durable Task Framework data stored in Azure Storage.
 /// </summary>
-public sealed class DurableTaskStorageService
+public sealed class DurableTaskStorageService : IDurableTaskStorageService
 {
     private readonly TableServiceClient _tableServiceClient;
     private readonly QueueServiceClient _queueServiceClient;

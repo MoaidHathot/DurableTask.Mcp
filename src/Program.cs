@@ -98,6 +98,7 @@ builder.Services.AddSingleton(new QueueServiceClient(queueServiceUri, credential
 builder.Services.AddSingleton(new BlobServiceClient(blobServiceUri, credential));
 
 // Register our storage service
+builder.Services.AddSingleton<IDurableTaskStorageService, DurableTaskStorageService>();
 builder.Services.AddSingleton<DurableTaskStorageService>();
 
 // Configure MCP server
