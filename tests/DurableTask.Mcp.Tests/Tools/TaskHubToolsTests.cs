@@ -1,12 +1,12 @@
 using System.Text.Json;
-using DurableTasksMcp.Models;
-using DurableTasksMcp.Services;
-using DurableTasksMcp.Tools;
+using DurableTask.Mcp.Models;
+using DurableTask.Mcp.Services;
+using DurableTask.Mcp.Tools;
 using FluentAssertions;
 using NSubstitute;
 using Xunit;
 
-namespace DurableTasksMcp.Tests.Tools;
+namespace DurableTask.Mcp.Tests.Tools;
 
 public class TaskHubToolsTests
 {

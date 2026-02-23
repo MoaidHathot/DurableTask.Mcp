@@ -1,9 +1,9 @@
-using DurableTasksMcp.Models;
-using DurableTasksMcp.Services;
+using DurableTask.Mcp.Models;
+using DurableTask.Mcp.Services;
 using FluentAssertions;
 using Xunit;
 
-namespace DurableTasksMcp.Tests.Services;
+namespace DurableTask.Mcp.Tests.Services;
 
 /// <summary>
 /// Tests for the DurableTaskStorageService.

@@ -1,9 +1,9 @@
 using System.ComponentModel;
 using System.Text.Json;
-using DurableTasksMcp.Services;
+using DurableTask.Mcp.Services;
 using ModelContextProtocol.Server;
 
-namespace DurableTasksMcp.Tools;
+namespace DurableTask.Mcp.Tools;
 
 /// <summary>
 /// MCP tools for inspecting Durable Task Framework orchestration history and events.

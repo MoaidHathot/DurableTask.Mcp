@@ -1,11 +1,11 @@
 using System.Text.Json;
-using DurableTasksMcp.Services;
-using DurableTasksMcp.Tools;
+using DurableTask.Mcp.Services;
+using DurableTask.Mcp.Tools;
 using FluentAssertions;
 using NSubstitute;
 using Xunit;
 
-namespace DurableTasksMcp.Tests.Tools;
+namespace DurableTask.Mcp.Tests.Tools;
 
 public class BlobToolsTests
 {

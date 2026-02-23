@@ -1,6 +1,6 @@
-using DurableTasksMcp.Models;
+using DurableTask.Mcp.Models;
 
-namespace DurableTasksMcp.Services;
+namespace DurableTask.Mcp.Services;
 
 /// <summary>
 /// Interface for accessing Durable Task Framework data stored in Azure Storage.

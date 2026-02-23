@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="DurableTask.Mcp/DurableTask.Mcp.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="../tests/DurableTask.Mcp.Tests/DurableTask.Mcp.Tests.csproj" />
+  </Folder>
+</Solution>

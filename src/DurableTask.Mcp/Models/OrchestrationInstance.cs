@@ -1,4 +1,4 @@
-namespace DurableTasksMcp.Models;
+namespace DurableTask.Mcp.Models;
 
 /// <summary>
 /// Represents an orchestration instance from the DTFx Instances table.

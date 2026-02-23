@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\DurableTasksMcp.csproj" />
+    <ProjectReference Include="..\..\src\DurableTask.Mcp\DurableTask.Mcp.csproj" />
   </ItemGroup>
 
 </Project>

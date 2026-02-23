@@ -2,10 +2,10 @@ using Azure.Data.Tables;
 using Azure.Identity;
 using Azure.Storage.Blobs;
 using Azure.Storage.Queues;
-using DurableTasksMcp.Models;
+using DurableTask.Mcp.Models;
 using Microsoft.Extensions.Logging;
 
-namespace DurableTasksMcp.Services;
+namespace DurableTask.Mcp.Services;
 
 /// <summary>
 /// Service for accessing Durable Task Framework data stored in Azure Storage.
